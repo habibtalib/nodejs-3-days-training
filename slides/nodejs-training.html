@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kursus Node.js 3 Hari — Sistem Aduan Pengguna KPDN</title>
+  <link rel="stylesheet" href="vendor/reveal/dist/reset.css">
+  <link rel="stylesheet" href="vendor/reveal/dist/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="vendor/reveal/dist/plugin/highlight/monokai.css">
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #566371;
+      --line: #d9ddd5;
+      --panel: #ffffff;
+      --paper: #f7f7f4;
+      --accent: #0f766e;
+      --red: #b42318;
+      --blue: #2563eb;
+      --purple: #7c3aed;
+      --amber: #b45309;
+      --code: #111827;
+    }
+
+    .reveal {
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal section {
+      box-sizing: border-box;
+      height: 100%;
+      padding: 34px 52px;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3,
+    .reveal p {
+      margin: 0;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .reveal h1 {
+      max-width: 1060px;
+      color: var(--ink);
+      font-size: 72px;
+      line-height: 0.98;
+      font-weight: 850;
+    }
+
+    .reveal h2 {
+      max-width: 1060px;
+      color: var(--ink);
+      font-size: 48px;
+      line-height: 1.05;
+      font-weight: 820;
+    }
+
+    .reveal h3 {
+      color: var(--ink);
+      font-size: 25px;
+      line-height: 1.15;
+      font-weight: 820;
+    }
+
+    .reveal p,
+    .reveal li,
+    .reveal td,
+    .reveal th {
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.38;
+    }
+
+    .reveal ul {
+      margin: 0;
+      padding-left: 1.1em;
+    }
+
+    .reveal li + li {
+      margin-top: 8px;
+    }
+
+    .reveal table {
+      margin: 0;
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 20px;
+    }
+
+    .reveal th,
+    .reveal td {
+      padding: 11px 13px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .reveal th {
+      background: #edf3f2;
+      color: var(--ink);
+      font-weight: 850;
+    }
+
+    .reveal td {
+      color: var(--muted);
+    }
+
+    .reveal tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .reveal pre {
+      width: 100%;
+      margin: 0;
+      box-shadow: none;
+      font-size: 16px;
+    }
+
+    .reveal pre code {
+      max-height: none;
+      padding: 16px 18px;
+      border-radius: 8px;
+      background: var(--code);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      line-height: 1.45;
+    }
+
+    .reveal code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .chapter,
+    .title-slide {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .chapter h1,
+    .chapter h2,
+    .chapter h3,
+    .chapter p,
+    .title-slide h1,
+    .title-slide h2,
+    .title-slide h3,
+    .title-slide p {
+      color: #fff;
+    }
+
+    .chapter .subtitle,
+    .chapter .footer,
+    .title-slide .subtitle,
+    .title-slide .footer {
+      color: #bfccd7;
+    }
+
+    .slide-frame {
+      display: grid;
+      height: 100%;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+    }
+
+    .center-stack {
+      display: grid;
+      gap: 20px;
+      align-content: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 850;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .chapter .eyebrow,
+    .title-slide .eyebrow {
+      color: #99f6e4;
+    }
+
+    .subtitle {
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 27px;
+      line-height: 1.34;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      min-height: 34px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 11px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 820;
+      white-space: nowrap;
+    }
+
+    .chapter .pill,
+    .title-slide .pill {
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 740;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: var(--panel);
+      box-shadow: 0 8px 24px rgba(23, 33, 43, 0.06);
+    }
+
+    .panel h3 {
+      margin-bottom: 8px;
+    }
+
+    .panel p,
+    .panel li {
+      font-size: 18px;
+    }
+
+    .metric {
+      display: grid;
+      min-height: 118px;
+      align-content: center;
+      gap: 8px;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--accent);
+      font-size: 50px;
+      line-height: 1;
+    }
+
+    .day {
+      min-height: 250px;
+      border-top: 6px solid var(--accent);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 9px;
+    }
+
+    .day:nth-child(2) { border-top-color: var(--blue); }
+    .day:nth-child(3) { border-top-color: var(--red); }
+
+    .day-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+    }
+
+    .node {
+      min-height: 47px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 13px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 820;
+      text-align: center;
+    }
+
+    .node.accent { background: #e6f4f1; border-color: #9bd2c9; color: #0d5d56; }
+    .node.warn { background: #fff1f0; border-color: #f2aba5; color: #9f1e16; }
+    .node.blue { background: #eaf1ff; border-color: #adc7ff; color: #1d4fb8; }
+    .node.purple { background: #f1e9ff; border-color: #cfb7ff; color: #5b21b6; }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .callout {
+      border-left: 6px solid var(--accent);
+      border-radius: 8px;
+      padding: 17px 19px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.38;
+    }
+
+    .tight p,
+    .tight li,
+    .tight td,
+    .tight th {
+      font-size: 18px;
+    }
+
+    .small {
+      font-size: 17px;
+    }
+
+    .reveal .progress {
+      color: var(--accent);
+      height: 5px;
+    }
+
+    .reveal .controls {
+      color: var(--accent);
+    }
+
+    .reveal .slide-number {
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: rgba(255,255,255,0.85);
+      color: var(--ink);
+      font-size: 12px;
+    }
+
+    @media print {
+      .panel {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1. Title -->
+      <section class="title-slide" data-background-color="#17212b">
+        <div class="slide-frame">
+          <div></div>
+          <div class="center-stack">
+            <div class="eyebrow">Kursus Node.js 3 Hari</div>
+            <h1>Bina Aplikasi Web dengan Node.js</h1>
+            <p class="subtitle">Program latihan amali 3 hari untuk pemula. Bina satu projek sebenar — Sistem Aduan Pengguna KPDN — menggunakan Node.js, Express, EJS, dan MongoDB. Nota dalam Bahasa Melayu, kod dalam Bahasa Inggeris.</p>
+            <div class="meta">
+              <span class="pill">Node.js</span>
+              <span class="pill">Express</span>
+              <span class="pill">EJS</span>
+              <span class="pill">MongoDB</span>
+              <span class="pill">Mongoose</span>
+              <span class="pill">REST API</span>
+            </div>
+          </div>
+          <div class="footer"><span>Sistem Aduan Pengguna KPDN</span><span>Guna anak panah, Space, atau Esc untuk gambaran keseluruhan</span></div>
+        </div>
+        <aside class="notes">
+          Mulakan dengan menerangkan bahawa projek yang sama berkembang setiap hari — dari halaman pertama hingga sistem CRUD lengkap dengan REST API dan deploy.
+        </aside>
+      </section>
+
+      <!-- 2. Outcome -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Hasil pembelajaran</div>
+          <div class="center-stack">
+            <h2>Peserta tamat dengan satu sistem web lengkap yang mereka boleh terangkan.</h2>
+            <div class="grid three">
+              <div class="panel metric fragment"><strong>3</strong><p>Hari latihan</p></div>
+              <div class="panel metric fragment"><strong>~18j</strong><p>Masa kelas + lab</p></div>
+              <div class="panel metric fragment"><strong>1</strong><p>Projek sebenar (KPDN)</p></div>
+            </div>
+          </div>
+          <div class="footer"><span>Sasaran akhir</span><span>CRUD penuh, REST API, papan pemuka, deploy ke awan</span></div>
+        </div>
+      </section>
+
+      <!-- 3. Class rhythm -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Rentak kelas</div>
+          <div class="center-stack tight">
+            <h2>Setiap hari 6 jam — daripada konsep kepada kod yang berfungsi.</h2>
+            <table>
+              <thead><tr><th>Blok masa</th><th>Fokus pengajar</th><th>Hasil peserta</th></tr></thead>
+              <tbody>
+                <tr><td>45 min</td><td>Konsep + gambaran seni bina hari</td><td>Faham objektif hari</td></tr>
+                <tr><td>120 min</td><td>Pembinaan berpandu (live coding)</td><td>Kod yang berjalan</td></tr>
+                <tr><td>60 min</td><td>Semak hasil dalam pelayar / API client</td><td>Kelakuan disahkan</td></tr>
+                <tr><td>90 min</td><td>Lab variasi + soal jawab</td><td>Perubahan sendiri + ulang kaji</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="footer"><span>Panduan masa</span><span>Laraskan rehat ikut kelajuan kelas &amp; isu persediaan</span></div>
+        </div>
+      </section>
+
+      <!-- 4. Roadmap -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Peta jalan</div>
+          <div class="center-stack">
+            <h2>Satu projek, dibina secara berperingkat.</h2>
+            <div class="grid three">
+              <div class="panel day fragment"><div class="day-label">Hari 1 · Buku Bab 1–6</div><h3>Asas Node.js &amp; JavaScript</h3><p>Pengenalan Node.js, persediaan (nvm/REPL/DevTools), asas JS, async, modul CJS/ESM, npm. Mula rangka Express + EJS + MongoDB.</p></div>
+              <div class="panel day fragment"><div class="day-label">Hari 2 · Buku Bab 7–10</div><h3>Web, Express &amp; Seni Bina</h3><p>Dipacu peristiwa &amp; pelayan HTTP, pengenalan pengujian, HTTP/REST, Express (EJS, routing, middleware), model &amp; CRUD.</p></div>
+              <div class="panel day fragment"><div class="day-label">Hari 3 · Buku Bab 11–15</div><h3>Aplikasi Kukuh</h3><p>Projek dari kosong, MongoDB/Mongoose, REST API, pengenalan auth/ralat/keselamatan, deploy.</p></div>
+            </div>
+          </div>
+          <div class="footer"><span>Struktur kursus</span><span>Dijajarkan dengan buku <em>Node.js for Beginners</em> (Gascón, Packt 2024)</span></div>
+        </div>
+      </section>
+
+      <!-- 5. Tech stack -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Susunan teknologi</div>
+          <div class="center-stack">
+            <h2>Stack JavaScript hujung ke hujung.</h2>
+            <div class="grid four">
+              <div class="panel fragment"><h3>Node.js</h3><p>Persekitaran runtime untuk jalankan JavaScript di pelayan.</p></div>
+              <div class="panel fragment"><h3>Express</h3><p>Rangka kerja web ringan — routing, middleware, dan paparan.</p></div>
+              <div class="panel fragment"><h3>EJS</h3><p>Enjin templat untuk menjana HTML dinamik dari data.</p></div>
+              <div class="panel fragment"><h3>MongoDB + Mongoose</h3><p>Pangkalan data NoSQL dengan skema &amp; validasi melalui Mongoose.</p></div>
+            </div>
+          </div>
+          <div class="footer"><span>Alat sokongan</span><span>dotenv, nodemon, method-override, express-session, connect-flash, Tailwind (CDN)</span></div>
+        </div>
+      </section>
+
+      <!-- 6. Domain -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Domain projek</div>
+          <div class="center-stack tight">
+            <h2>Entiti utama: <code>Aduan</code> pengguna KPDN.</h2>
+            <table>
+              <thead><tr><th>Medan</th><th>Jenis</th><th>Penerangan</th></tr></thead>
+              <tbody>
+                <tr><td>noAduan</td><td>String (unik)</td><td>Nombor rujukan automatik — ADN-2026-0001</td></tr>
+                <tr><td>namaPengadu, noIc, telefon, email</td><td>String</td><td>Maklumat pengadu</td></tr>
+                <tr><td>kategori</td><td>enum</td><td>Harga Tidak Berpatutan, Barang Kawalan, dll.</td></tr>
+                <tr><td>premis, lokasi, butiran</td><td>String</td><td>Maklumat aduan</td></tr>
+                <tr><td>status</td><td>enum</td><td>Baru → Dalam Siasatan → Selesai / Ditolak</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="footer"><span>Inspirasi: kpdn.gov.my</span><span>Aduan harga, barang kawalan, penyukatan, penipuan</span></div>
+        </div>
+      </section>
+
+      <!-- ===================== HARI 1 ===================== -->
+      <section class="chapter" data-background-color="#17212b">
+        <div class="slide-frame">
+          <div class="eyebrow">Hari 1</div>
+          <div class="center-stack">
+            <h1>Persediaan &amp; Asas Node.js</h1>
+            <p class="subtitle">Pasang alat, fahami asas JavaScript untuk pelayan, dan bina rangka Express + EJS yang bersambung ke MongoDB.</p>
+          </div>
+          <div class="footer"><span>Hari 1</span><span>Persediaan → pelayan pertama → sambungan pangkalan data</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Persediaan</div>
+          <div class="center-stack">
+            <h2>Tiga alat utama sebelum mula.</h2>
+            <div class="grid three">
+              <div class="panel fragment"><h3>Node.js (LTS)</h3><p>Sahkan dengan <code>node -v</code> dan <code>npm -v</code>. npm datang bersama Node.js.</p></div>
+              <div class="panel fragment"><h3>VS Code</h3><p>Editor kod + sambungan: ESLint, Prettier, EJS, DotENV.</p></div>
+              <div class="panel fragment"><h3>MongoDB Atlas</h3><p>Cluster percuma di awan. Cipta pengguna DB, benarkan IP, salin connection string.</p></div>
+            </div>
+          </div>
+          <div class="footer"><span>Langkah persediaan</span><span>Tiada pemasangan pangkalan data tempatan diperlukan</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Asas JavaScript</div>
+          <div class="center-stack">
+            <h2>Empat konsep yang akan digunakan setiap hari.</h2>
+            <pre><code class="language-js" data-trim data-noescape>// 1) const / let
+const nama = "KPDN";
+
+// 2) Arrow function
+const tambah = (a, b) => a + b;
+
+// 3) async / await — untuk operasi pangkalan data
+async function muatAduan() {
+  const senarai = await Aduan.find();
+  return senarai;
+}
+
+// 4) Modul CommonJS
+module.exports = muatAduan;     // eksport
+const fn = require("./fail");   // import</code></pre>
+          </div>
+          <div class="footer"><span>Asas bahasa</span><span>async/await ialah kunci untuk MongoDB</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 1–2</div>
+          <div class="center-stack">
+            <h2>Pelayan Express pertama.</h2>
+            <pre><code class="language-bash" data-trim>npm init -y
+npm install express
+npm install --save-dev nodemon</code></pre>
+            <pre><code class="language-js" data-trim data-noescape>const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Helo KPDN!");
+});
+
+app.listen(3000, () => {
+  console.log("Pelayan di http://localhost:3000");
+});</code></pre>
+          </div>
+          <div class="footer"><span>Express</span><span>Jalankan dengan <code>npm run dev</code> (nodemon)</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 3</div>
+          <div class="center-stack">
+            <h2>Paparan EJS + layout.</h2>
+            <pre><code class="language-js" data-trim data-noescape>const expressLayouts = require("express-ejs-layouts");
+
+app.set("view engine", "ejs");
+app.use(expressLayouts);
+app.set("layout", "layout");      // views/layout.ejs
+
+app.get("/", (req, res) => {
+  res.render("index", { title: "Selamat Datang" });
+});</code></pre>
+            <div class="callout">EJS membenarkan kita selit data ke dalam HTML: <code>&lt;%= title %&gt;</code> dan ulangan dengan <code>&lt;% senarai.forEach(...) %&gt;</code>.</div>
+          </div>
+          <div class="footer"><span>EJS</span><span>layout.ejs = rangka; views = kandungan</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 5</div>
+          <div class="center-stack">
+            <h2>Sambung ke MongoDB Atlas.</h2>
+            <pre><code class="language-js" data-trim data-noescape>// config/db.js
+const mongoose = require("mongoose");
+
+async function connectDB() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("✅ Berjaya sambung ke MongoDB");
+  } catch (error) {
+    console.error("❌ Gagal sambung:", error.message);
+    process.exit(1);
+  }
+}
+
+module.exports = connectDB;</code></pre>
+          </div>
+          <div class="footer"><span>MongoDB</span><span>Connection string disimpan dalam .env (MONGODB_URI)</span></div>
+        </div>
+      </section>
+
+      <!-- ===================== HARI 2 ===================== -->
+      <section class="chapter" data-background-color="#17212b">
+        <div class="slide-frame">
+          <div class="eyebrow">Hari 2</div>
+          <div class="center-stack">
+            <h1>Model, Pangkalan Data &amp; CRUD</h1>
+            <p class="subtitle">Bina model Mongoose, susun kod ikut corak MVC, dan laksanakan operasi Cipta (Create) dan Baca (Read) dengan borang, validasi, dan carian.</p>
+          </div>
+          <div class="footer"><span>Hari 2</span><span>Model → Controller → Route → View</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Corak MVC</div>
+          <div class="center-stack">
+            <h2>Pisahkan tanggungjawab: Model, View, Controller.</h2>
+            <div class="flow">
+              <div class="node blue">Permintaan (Browser)</div>
+              <div class="arrow">→</div>
+              <div class="node">Route</div>
+              <div class="arrow">→</div>
+              <div class="node accent">Controller</div>
+              <div class="arrow">→</div>
+              <div class="node purple">Model (Mongoose)</div>
+              <div class="arrow">→</div>
+              <div class="node warn">View (EJS)</div>
+            </div>
+            <div class="grid three">
+              <div class="panel"><h3>Model</h3><p><code>models/Aduan.js</code> — struktur data &amp; peraturan.</p></div>
+              <div class="panel"><h3>Controller</h3><p><code>controllers/</code> — logik setiap operasi.</p></div>
+              <div class="panel"><h3>View</h3><p><code>views/</code> — paparan HTML (EJS).</p></div>
+            </div>
+          </div>
+          <div class="footer"><span>Seni bina</span><span>Mudah diuji, mudah diselenggara</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 1</div>
+          <div class="center-stack">
+            <h2>Model Mongoose untuk <code>Aduan</code>.</h2>
+            <pre><code class="language-js" data-trim data-noescape>const aduanSchema = new mongoose.Schema({
+  noAduan: { type: String, unique: true },
+  namaPengadu: { type: String, required: [true, "Nama wajib diisi"] },
+  kategori: {
+    type: String,
+    enum: { values: KATEGORI, message: 'Kategori "{VALUE}" tidak sah' },
+  },
+  status: { type: String, enum: STATUS, default: "Baru" },
+}, { timestamps: true });
+
+module.exports = mongoose.model("Aduan", aduanSchema);</code></pre>
+          </div>
+          <div class="footer"><span>Mongoose</span><span>Skema = struktur + validasi + nilai lalai</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 2</div>
+          <div class="center-stack">
+            <h2>Controller: Cipta &amp; Baca.</h2>
+            <pre><code class="language-js" data-trim data-noescape>// Baca + carian
+exports.index = async (req, res) => {
+  const { carian } = req.query;
+  const pertanyaan = {};
+  if (carian) {
+    pertanyaan.$or = [
+      { namaPengadu: { $regex: carian, $options: "i" } },
+      // ...boleh tambah noAduan, premis
+    ];
+  }
+  const senaraiAduan = await Aduan.find(pertanyaan).sort({ createdAt: -1 });
+  res.render("aduan/index", { senaraiAduan, carian });
+};
+// Cipta aduan baru
+exports.store = async (req, res) => {
+  const aduan = await Aduan.create(req.body);
+  res.redirect(`/aduan/${aduan.id}`);
+};</code></pre>
+          </div>
+          <div class="footer"><span>Controller</span><span>async/await + req.query + req.body</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 3</div>
+          <div class="center-stack tight">
+            <h2>Susunan laluan penting!</h2>
+            <pre><code class="language-js" data-trim data-noescape>router.get("/aduan", aduan.index);
+router.get("/aduan/create", aduan.create); // SEBELUM /aduan/:id
+router.post("/aduan", aduan.store);
+router.get("/aduan/:id", aduan.show);</code></pre>
+            <div class="callout"><strong>Nota:</strong> <code>/aduan/create</code> mesti didaftar <em>sebelum</em> <code>/aduan/:id</code>, jika tidak Express akan anggap "create" sebagai satu <code>:id</code>.</div>
+          </div>
+          <div class="footer"><span>Routing</span><span>Laluan khusus sebelum laluan dinamik</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 4–7</div>
+          <div class="center-stack">
+            <h2>Borang, validasi, carian &amp; seeder.</h2>
+            <div class="grid two">
+              <div class="panel fragment"><h3>Borang &amp; validasi</h3><p>Hantar data borang dengan <code>express.urlencoded</code>. Jika validasi gagal, papar semula borang dengan mesej ralat &amp; nilai asal.</p></div>
+              <div class="panel fragment"><h3>Carian</h3><p>Tapis senarai dengan <code>$regex</code> + <code>$or</code> pada nama, no. aduan, atau premis.</p></div>
+              <div class="panel fragment"><h3>Seeder</h3><p><code>npm run seed</code> isi data contoh: <code>deleteMany()</code> kemudian <code>create()</code> dalam gelung.</p></div>
+              <div class="panel fragment"><h3>Auto noAduan</h3><p>Hook <code>pre("save")</code> jana ADN-2026-0001 secara automatik.</p></div>
+            </div>
+          </div>
+          <div class="footer"><span>Cipta + Baca siap</span><span>Senarai, daftar, papar butiran berfungsi</span></div>
+        </div>
+      </section>
+
+      <!-- ===================== HARI 3 ===================== -->
+      <section class="chapter" data-background-color="#17212b">
+        <div class="slide-frame">
+          <div class="eyebrow">Hari 3</div>
+          <div class="center-stack">
+            <h1>CRUD Lengkap, REST API &amp; Deploy</h1>
+            <p class="subtitle">Lengkapkan Kemaskini &amp; Padam, tambah mesej flash dan papan pemuka, bina REST API JSON, dan naikkan aplikasi ke hosting awan.</p>
+          </div>
+          <div class="footer"><span>Hari 3</span><span>Update → Delete → API → Deploy</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 1–2</div>
+          <div class="center-stack tight">
+            <h2>Kemaskini dengan <code>method-override</code>.</h2>
+            <p>Borang HTML hanya menyokong GET &amp; POST. Untuk hantar PUT/DELETE, kita "tukar" kaedah:</p>
+            <pre><code class="language-js" data-trim data-noescape>const methodOverride = require("method-override");
+app.use(methodOverride("_method"));</code></pre>
+            <pre><code class="language-html" data-trim data-noescape>&lt;form method="POST" action="/aduan/123?_method=PUT"&gt;
+  &lt;!-- medan borang --&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+          <div class="footer"><span>Update &amp; Delete</span><span>?_method=PUT atau ?_method=DELETE</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 3</div>
+          <div class="center-stack">
+            <h2>Mesej flash selepas redirect.</h2>
+            <pre><code class="language-js" data-trim data-noescape>const session = require("express-session");
+const flash = require("connect-flash");
+
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.jaya = req.flash("jaya");   // mesej berjaya
+  res.locals.gagal = req.flash("gagal"); // mesej gagal
+  next();
+});
+
+// Dalam controller:
+req.flash("jaya", "Aduan berjaya dikemaskini.");</code></pre>
+          </div>
+          <div class="footer"><span>UX</span><span>Maklum balas sekali papar selepas tindakan</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 5</div>
+          <div class="center-stack">
+            <h2>Papan pemuka dengan statistik.</h2>
+            <pre><code class="language-js" data-trim data-noescape>exports.dashboard = async (req, res) => {
+  const jumlah = await Aduan.countDocuments();
+  const baru = await Aduan.countDocuments({ status: "Baru" });
+  const siasatan = await Aduan.countDocuments({ status: "Dalam Siasatan" });
+  const selesai = await Aduan.countDocuments({ status: "Selesai" });
+  const terkini = await Aduan.find().sort({ createdAt: -1 }).limit(5);
+  res.render("index", { statistik: { jumlah, baru, siasatan, selesai }, terkini });
+};</code></pre>
+          </div>
+          <div class="footer"><span>Papan pemuka</span><span>countDocuments() mengikut status</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 6</div>
+          <div class="center-stack tight">
+            <h2>REST API — pulangkan JSON, bukan HTML.</h2>
+            <table>
+              <thead><tr><th>Kaedah</th><th>Laluan</th><th>Fungsi</th></tr></thead>
+              <tbody>
+                <tr><td>GET</td><td>/api/aduan</td><td>Senarai semua aduan</td></tr>
+                <tr><td>GET</td><td>/api/aduan/:id</td><td>Satu aduan</td></tr>
+                <tr><td>POST</td><td>/api/aduan</td><td>Cipta aduan baru</td></tr>
+                <tr><td>PUT</td><td>/api/aduan/:id</td><td>Kemaskini aduan</td></tr>
+                <tr><td>DELETE</td><td>/api/aduan/:id</td><td>Padam aduan</td></tr>
+              </tbody>
+            </table>
+            <pre><code class="language-js" data-trim data-noescape>exports.index = async (req, res) => {
+  const senarai = await Aduan.find().sort({ createdAt: -1 });
+  res.json({ jumlah: senarai.length, data: senarai });
+};</code></pre>
+          </div>
+          <div class="footer"><span>REST API</span><span>Uji dengan pelayar, curl, atau Thunder Client</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 6 — uji</div>
+          <div class="center-stack">
+            <h2>Uji API dengan <code>curl</code>.</h2>
+            <pre><code class="language-bash" data-trim># Senarai semua aduan
+curl http://localhost:3000/api/aduan
+
+# Cipta aduan baru (JSON)
+curl -X POST http://localhost:3000/api/aduan \
+  -H "Content-Type: application/json" \
+  -d '{"namaPengadu":"Ali","noIc":"900101145566","telefon":"0123456789","kategori":"Barang Kawalan","premis":"Kedai A","lokasi":"Kedah","butiran":"Stok gas habis"}'</code></pre>
+            <div class="callout">Lihat folder <code>hari-3/snippets/</code> untuk skrip ujian siap pakai.</div>
+          </div>
+          <div class="footer"><span>Lab</span><span>snippets/curl-test.sh</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Langkah 7</div>
+          <div class="center-stack">
+            <h2>Naik ke awan (deploy).</h2>
+            <div class="flow">
+              <div class="node">Push ke GitHub</div>
+              <div class="arrow">→</div>
+              <div class="node accent">Render (Web Service)</div>
+              <div class="arrow">→</div>
+              <div class="node blue">MongoDB Atlas</div>
+            </div>
+            <div class="grid three">
+              <div class="panel"><h3>GitHub</h3><p>.gitignore tolak <code>node_modules</code> &amp; <code>.env</code>.</p></div>
+              <div class="panel"><h3>Render</h3><p>Build: <code>npm install</code> · Start: <code>npm start</code>. Set env: MONGODB_URI, SESSION_SECRET.</p></div>
+              <div class="panel"><h3>Atlas</h3><p>Network Access: benarkan <code>0.0.0.0/0</code> supaya pelayan awan boleh sambung.</p></div>
+            </div>
+          </div>
+          <div class="footer"><span>Deploy</span><span>Gunakan PORT dari process.env</span></div>
+        </div>
+      </section>
+
+      <!-- CRUD ↔ HTTP -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Ringkasan konsep</div>
+          <div class="center-stack tight">
+            <h2>CRUD dipetakan kepada kaedah HTTP.</h2>
+            <table>
+              <thead><tr><th>Operasi</th><th>HTTP</th><th>Laluan web</th><th>Mongoose</th></tr></thead>
+              <tbody>
+                <tr><td>Create</td><td>POST</td><td>/aduan</td><td>Aduan.create()</td></tr>
+                <tr><td>Read (senarai)</td><td>GET</td><td>/aduan</td><td>Aduan.find()</td></tr>
+                <tr><td>Read (satu)</td><td>GET</td><td>/aduan/:id</td><td>Aduan.findById()</td></tr>
+                <tr><td>Update</td><td>PUT</td><td>/aduan/:id</td><td>save() / findByIdAndUpdate()</td></tr>
+                <tr><td>Delete</td><td>DELETE</td><td>/aduan/:id</td><td>findByIdAndDelete()</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="footer"><span>Peta CRUD</span><span>Corak yang sama untuk web &amp; API</span></div>
+        </div>
+      </section>
+
+      <!-- Close -->
+      <section class="title-slide" data-background-color="#17212b">
+        <div class="slide-frame">
+          <div></div>
+          <div class="center-stack">
+            <div class="eyebrow">Penutup</div>
+            <h1>Anda kini boleh bina &amp; terangkan aplikasi Node.js penuh.</h1>
+            <p class="subtitle">Daripada halaman pertama kepada sistem CRUD lengkap dengan REST API dan deploy. Langkah seterusnya: pengesahan log masuk (auth), muat naik fail, pagination, dan ujian automatik.</p>
+            <div class="meta">
+              <span class="pill">Bina</span>
+              <span class="pill">CRUD</span>
+              <span class="pill">API</span>
+              <span class="pill">Deploy</span>
+            </div>
+          </div>
+          <div class="footer"><span>Kursus Node.js 3 Hari</span><span>Tamat — terima kasih!</span></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="vendor/reveal/dist/reveal.js"></script>
+  <script src="vendor/reveal/dist/plugin/highlight.js"></script>
+  <script src="vendor/reveal/dist/plugin/notes.js"></script>
+  <script src="vendor/reveal/dist/plugin/search.js"></script>
+  <script src="vendor/reveal/dist/plugin/zoom.js"></script>
+  <script>
+    const legacyHash = window.location.hash.match(/^#(\d+)$/);
+    if (legacyHash) {
+      window.history.replaceState(null, '', '#/' + legacyHash[1]);
+    }
+
+    Reveal.initialize({
+      hash: true,
+      hashOneBasedIndex: true,
+      controls: true,
+      progress: true,
+      slideNumber: 'c/t',
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      center: false,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      plugins: [
+        RevealHighlight,
+        RevealNotes,
+        RevealSearch,
+        RevealZoom
+      ]
+    });
+  </script>
+</body>
+</html>

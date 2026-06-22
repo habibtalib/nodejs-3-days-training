@@ -1,0 +1,8 @@
+/* public/css/custom.css
+   Fail CSS tersuai. Kebanyakan gaya datang dari Tailwind (CDN),
+   tetapi anda boleh tambah gaya anda sendiri di sini. */
+
+/* Contoh: penanda pautan aktif dalam navbar */
+.nav-active {
+  font-weight: 600;
+}
