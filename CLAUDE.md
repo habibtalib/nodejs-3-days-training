@@ -13,6 +13,7 @@ Unlike a typical single-app repo, each `hari-N/` folder is a **standalone, runna
 - `hari-{1..3}/README.md` — Full step-by-step lecture notes for each day (Bahasa Melayu)
 - `hari-{1..3}/` — A complete, runnable Express app at that day's state
 - `hari-{1..3}/snippets/` — Per-day lab folder: a `lab.md` exercise + helper files (e.g. `test-mongodb.js`, `curl-test.sh`, `api-requests.http`)
+- `nota/` — Background concept notes (BM): why Node.js (Bab 1), why MongoDB (Bab 12), Node.js+MongoDB together + real commercial examples (Netflix/PayPal/eBay/Forbes). Reference notes, not hands-on steps.
 - `slides/` — reveal.js presentation deck (`nodejs-training.html`) with vendored reveal.js under `slides/vendor/reveal/` (works from `file://`)
 
 This layout mirrors the sibling `laravel-api` training repo (per-day `snippets/` labs + a vendored reveal.js deck).

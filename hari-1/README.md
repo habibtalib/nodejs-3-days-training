@@ -69,9 +69,47 @@ Node.js menggunakan **Semantic Versioning (SemVer)** — format `MAJOR.MINOR.PAT
 
 ---
 
+## Node.js (Express) vs Laravel — Untuk Yang Sudah Kenal Laravel
+
+Jika anda sudah biasa dengan **Laravel (PHP)**, berita baik: **banyak konsep memetakan terus** ke Node.js + Express. Perbezaan utama hanyalah **bahasa** (JavaScript vs PHP) dan **falsafah** — Laravel ialah rangka kerja **penuh** (banyak terbina dalam), manakala Express **minimalis** (anda pilih komponen sendiri).
+
+### Perbandingan peringkat tinggi
+
+| Aspek | Laravel (PHP) | Node.js (Express) |
+|-------|---------------|-------------------|
+| Bahasa | PHP | JavaScript |
+| Jenis rangka kerja | Penuh — *batteries included* | Minimalis — pilih komponen sendiri |
+| Model konkurensi | Segerak (proses per permintaan) | Event loop, non-blocking (async) |
+| Pengurus pakej | Composer | npm / pnpm / Yarn / Bun |
+| Pangkalan data lazim | MySQL (relational) | MongoDB (NoSQL) |
+| Falsafah | *Convention over configuration* | *Unopinionated* (fleksibel) |
+
+### Pemetaan konsep ("dalam Laravel… dalam Express…")
+
+| Konsep | Laravel | Node.js + Express (kursus ini) |
+|--------|---------|--------------------------------|
+| Routing | `Route::get()` dalam `routes/web.php` | `router.get()` dalam `routes/web.js` |
+| Controller | `App\Http\Controllers\…` | `controllers/*.js` (`exports.fn`) |
+| Model / ORM | Eloquent (`Model`) | Mongoose (`Schema` + `model`) |
+| Skema / migrasi | `php artisan migrate` | Skema ditakrif dalam kod Mongoose |
+| View / templat | Blade (`.blade.php`) | EJS (`.ejs`) |
+| Layout | `@extends` / `@section` | `express-ejs-layouts` |
+| Middleware | `app/Http/Middleware` | `app.use()` / fungsi middleware |
+| Validasi | Form Request / `$request->validate()` | Validasi skema Mongoose / `express-validator` |
+| Konfigurasi & rahsia | `.env` + `config()` | `.env` + `process.env` (dotenv) |
+| Fail kebergantungan | `composer.json` / `vendor/` | `package.json` / `node_modules/` |
+| CLI / jalankan pelayan | `php artisan serve` | `npm run dev` (nodemon) |
+| Pengesahan (auth) | Breeze / Sanctum / Passport | Passport.js / JWT |
+
+> **Kesimpulan:** Corak **MVC** adalah sama. Yang berubah hanyalah **sintaks, bahasa, dan ekosistem**. Laravel memberi banyak perkara "secara percuma" (auth, ORM, migrasi); Express memberi **kebebasan** untuk anda pilih komponen. Jika anda sudah kenal Laravel, anda sebenarnya sudah faham sebahagian besar konsep Node.js — tinggal belajar **sintaks JavaScript** dan **alat baharu** (npm, Mongoose, EJS).
+
+---
+
 ## Persediaan (Bab 2)
 
 Sebelum menulis kod, kita perlu pasang beberapa perisian dan sediakan pangkalan data. Bahagian ini sepadan dengan **Bab 2 — Setting Up the Development Environment**.
+
+> 🪟 **Tutorial Windows penuh:** Untuk panduan persediaan tempatan Windows yang lebih terperinci (langkah + **pautan tutorial visual rasmi dengan tangkapan skrin** + troubleshooting), lihat [`nota/07-setup-windows.md`](../nota/07-setup-windows.md). Ringkasan di bawah sudah memadai untuk mula.
 
 > **Keperluan sistem (Windows):** Windows 10/11 (64-bit), minimum **4GB RAM** (8GB disyorkan), **2GB** ruang cakera kosong, dan sambungan internet. Panduan ini ditulis untuk **Windows**, tetapi langkah yang sama terpakai untuk macOS/Linux. Anda perlukan akaun pengguna dengan kebenaran *Administrator* untuk memasang perisian.
 

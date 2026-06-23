@@ -406,6 +406,46 @@
         </aside>
       </section>
 
+      <!-- 1b. Pengajar -->
+      <section class="title-slide" data-background-color="#17212b">
+        <div class="slide-frame">
+          <div></div>
+          <div class="center-stack">
+            <div class="eyebrow">Pengajar</div>
+            <h1>Habib bin Talib</h1>
+            <p class="subtitle">Full Stack Software Developer · 15 tahun pengalaman membina sistem web, API, mobile, infrastruktur &amp; cloud untuk agensi kerajaan dan korporat.</p>
+            <div class="meta">
+              <span class="pill">Web / API</span>
+              <span class="pill">Mobile</span>
+              <span class="pill">DevOps</span>
+              <span class="pill">Infra</span>
+              <span class="pill">Cloud</span>
+            </div>
+            <div class="meta">
+              <span class="pill">Komuniti: Techtamu</span>
+              <span class="pill">DevHub</span>
+              <span class="pill">Hasan VC</span>
+            </div>
+          </div>
+          <div class="footer"><span>bespokesb.com</span><span>hello@bespokesb.com</span></div>
+        </div>
+      </section>
+
+      <!-- 1c. Portfolio -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Portfolio</div>
+          <div class="center-stack">
+            <h2>Projek &amp; latihan terpilih.</h2>
+            <div class="grid two">
+              <div class="panel fragment"><h3>Projek</h3><p>Yayasan Negeri Sembilan · Yayasan Pelajaran Johor · FIMMs · Docket Smart Selangor · Koperasi Global Mesra (KOMITED) · System Agent · Meeracle Beauty · Noir Beauty · Ferra Rossa · Zai Permai</p></div>
+              <div class="panel fragment"><h3>Latihan dikendalikan</h3><p><strong>JPJ</strong> — Figma<br><strong>PLPU</strong> — Generative AI (Gemini)<br><strong>SUK Kedah</strong> — Laravel<br><strong>NRES</strong> — Power BI<br><strong>KPDN</strong> — Node.js (kursus ini)</p></div>
+            </div>
+          </div>
+          <div class="footer"><span>Portfolio pengajar</span><span>Pelbagai agensi kerajaan &amp; korporat</span></div>
+        </div>
+      </section>
+
       <!-- 2. Outcome -->
       <section>
         <div class="slide-frame">
@@ -475,6 +515,115 @@
         </div>
       </section>
 
+      <!-- 5a1. Kenapa Node.js — perbandingan -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Kenapa Node.js?</div>
+          <div class="center-stack tight">
+            <h2>Node.js berbanding teknologi lain.</h2>
+            <table>
+              <thead><tr><th>Teknologi</th><th>Model</th><th>Paling sesuai untuk</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Node.js</strong></td><td>Event loop, I/O tak menyekat</td><td>API, masa nyata, aplikasi banyak I/O</td></tr>
+                <tr><td>PHP (Laravel)</td><td>Segerak (proses per permintaan)</td><td>Web tradisional, CMS</td></tr>
+                <tr><td>Python (Django)</td><td>Segerak (boleh async)</td><td>Sains data, AI/ML, web umum</td></tr>
+                <tr><td>Java (Spring)</td><td>Multi-thread</td><td>Sistem perusahaan besar, perbankan</td></tr>
+                <tr><td>Go</td><td>Goroutine (concurrency)</td><td>Infrastruktur, prestasi tinggi</td></tr>
+                <tr><td>.NET (C#)</td><td>Multi-thread</td><td>Persekitaran Microsoft</td></tr>
+              </tbody>
+            </table>
+            <div class="callout">Tiada yang "terbaik" untuk semua. Node.js menyerlah untuk aplikasi <strong>banyak I/O</strong> + <strong>satu bahasa (JavaScript)</strong> merentas frontend &amp; backend.</div>
+          </div>
+          <div class="footer"><span>Latar belakang: nota/01-kenapa-nodejs.md</span><span>Buku Bab 1</span></div>
+        </div>
+      </section>
+
+      <!-- 5a2. Bila guna Node.js -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Bila guna Node.js?</div>
+          <div class="center-stack">
+            <h2>Sesuai — dan kurang sesuai.</h2>
+            <div class="grid two">
+              <div class="panel fragment"><h3>✅ Sangat sesuai</h3><p>REST / GraphQL API · aplikasi masa nyata (chat, notifikasi, WebSocket) · backend SPA · microservices · streaming · sistem banyak I/O (portal aduan, tempahan) · alat CLI &amp; serverless.</p></div>
+              <div class="panel fragment"><h3>⚠️ Kurang sesuai</h3><p>Tugas berat CPU — pemprosesan imej/video, latihan AI/ML, kiraan saintifik besar. Satu utas utama boleh <strong>tersekat</strong>.<br><strong>Penyelesaian:</strong> Worker Threads, job queue, atau bahasa lain.</p></div>
+            </div>
+            <div class="callout">Projek kursus (sistem aduan) = <strong>banyak I/O, tiada kiraan berat</strong> → padanan sempurna untuk Node.js.</div>
+          </div>
+          <div class="footer"><span>Use cases Node.js</span><span>Buku Bab 1</span></div>
+        </div>
+      </section>
+
+      <!-- 5a3. Kenapa MongoDB — SQL vs NoSQL -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Kenapa MongoDB?</div>
+          <div class="center-stack tight">
+            <h2>SQL berbanding NoSQL (MongoDB).</h2>
+            <table>
+              <thead><tr><th>Aspek</th><th>SQL (MySQL/PostgreSQL)</th><th>NoSQL — MongoDB</th></tr></thead>
+              <tbody>
+                <tr><td>Struktur data</td><td>Jadual, baris, lajur</td><td>Dokumen JSON</td></tr>
+                <tr><td>Skema</td><td>Tetap &amp; ketat</td><td>Fleksibel (boleh berubah)</td></tr>
+                <tr><td>Hubungan</td><td>JOIN antara jadual</td><td>Dokumen bersarang / rujukan</td></tr>
+                <tr><td>Skala</td><td>Menegak (server lebih besar)</td><td>Mendatar (banyak server) mudah</td></tr>
+                <tr><td>Sesuai untuk</td><td>Data sangat relational</td><td>Data fleksibel, JSON, berkembang</td></tr>
+              </tbody>
+            </table>
+            <div class="callout">MongoDB simpan <strong>dokumen JSON</strong> — sepadan dengan objek JavaScript. SQL &amp; NoSQL ialah alat berbeza untuk masalah berbeza.</div>
+          </div>
+          <div class="footer"><span>Latar belakang: nota/02-kenapa-mongodb.md</span><span>Buku Bab 12</span></div>
+        </div>
+      </section>
+
+      <!-- 5a4. Bila guna MongoDB -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Bila guna MongoDB?</div>
+          <div class="center-stack">
+            <h2>Sesuai — dan kurang sesuai.</h2>
+            <div class="grid two">
+              <div class="panel fragment"><h3>✅ Sangat sesuai</h3><p>Skema yang berubah-ubah · data JSON (REST API) · prototaip pantas · sistem kandungan (CMS) &amp; katalog · analitik masa nyata &amp; log · IoT · data bersarang/hierarki.</p></div>
+              <div class="panel fragment"><h3>⚠️ Kurang sesuai</h3><p>Data sangat relational dengan banyak JOIN kompleks &amp; ACID ketat (cth: lejar kewangan) → <strong>SQL</strong> lebih sesuai.<br><em>(MongoDB moden kini menyokong transaksi multi-dokumen.)</em></p></div>
+            </div>
+            <div class="callout">Satu aduan = satu <strong>dokumen</strong> dengan medan pelbagai yang boleh berkembang → padanan baik untuk MongoDB.</div>
+          </div>
+          <div class="footer"><span>Use cases MongoDB</span><span>Buku Bab 12</span></div>
+        </div>
+      </section>
+
+      <!-- 5b. Kenapa stack ini -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Kenapa stack ini?</div>
+          <div class="center-stack">
+            <h2>Kenapa Node.js + MongoDB?</h2>
+            <div class="grid two">
+              <div class="panel fragment"><h3>Node.js</h3><p>Satu bahasa (JavaScript) depan &amp; belakang · I/O tak menyekat (banyak pengguna serentak) · pantas (V8) · ekosistem npm terbesar.</p><p><strong>Sesuai:</strong> API, aplikasi masa nyata, sistem banyak I/O seperti portal aduan.</p></div>
+              <div class="panel fragment"><h3>MongoDB</h3><p>Simpan dokumen JSON (sepadan dengan objek JavaScript) · skema fleksibel · mudah skala mendatar.</p><p><strong>Sesuai:</strong> data yang berubah, JSON, prototaip pantas, CRUD &amp; CMS.</p></div>
+            </div>
+            <div class="callout"><strong>JSON hujung ke hujung:</strong> pelayar → Node.js → MongoDB tanpa "terjemahan" antara lapisan — pembangunan lebih pantas.</div>
+          </div>
+          <div class="footer"><span>Latar belakang: nota/01–03</span><span>Buku Bab 1 &amp; 12 · ⚠️ kurang sesuai untuk kerja berat CPU</span></div>
+        </div>
+      </section>
+
+      <!-- 5c. Contoh komersial -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Terbukti dalam pengeluaran</div>
+          <div class="center-stack">
+            <h2>Digunakan oleh syarikat sebenar.</h2>
+            <div class="grid two">
+              <div class="panel fragment"><h3>Guna Node.js</h3><p><strong>Netflix</strong> — UI, masa permulaan ~70% lebih laju · <strong>PayPal</strong> — respons 35% lebih laju, pasukan lebih kecil · <strong>LinkedIn</strong> — backend mudah alih · Uber · Walmart · NASA.</p></div>
+              <div class="panel fragment"><h3>Guna MongoDB</h3><p><strong>eBay</strong> — katalog produk · <strong>Forbes</strong> — CMS, 120 juta+ pelawat · <strong>Adobe</strong> — Experience Manager · SAP · Coinbase · Toyota.</p></div>
+            </div>
+            <div class="callout"><strong>eBay menggunakan kedua-duanya</strong> — gabungan Node.js + MongoDB ialah asas stack <strong>MEAN / MERN</strong> yang digunakan oleh ribuan sistem.</div>
+          </div>
+          <div class="footer"><span>Sumber &amp; butiran: nota/03-nodejs-dan-mongodb.md</span><span>Syarikat besar guna banyak teknologi (polyglot)</span></div>
+        </div>
+      </section>
+
       <!-- 6. Domain -->
       <section>
         <div class="slide-frame">
@@ -508,6 +657,30 @@
         </div>
       </section>
 
+      <!-- Node.js vs Laravel -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Untuk yang sudah kenal Laravel</div>
+          <div class="center-stack tight">
+            <h2>Node.js (Express) vs Laravel.</h2>
+            <table>
+              <thead><tr><th>Konsep</th><th>Laravel (PHP)</th><th>Node.js + Express</th></tr></thead>
+              <tbody>
+                <tr><td>Routing</td><td><code>Route::get()</code></td><td><code>router.get()</code></td></tr>
+                <tr><td>Controller</td><td><code>App\Http\Controllers</code></td><td><code>controllers/*.js</code></td></tr>
+                <tr><td>Model / ORM</td><td>Eloquent</td><td>Mongoose</td></tr>
+                <tr><td>View / templat</td><td>Blade (<code>.blade.php</code>)</td><td>EJS (<code>.ejs</code>)</td></tr>
+                <tr><td>Middleware</td><td><code>app/Http/Middleware</code></td><td><code>app.use()</code></td></tr>
+                <tr><td>Pengurus pakej</td><td>Composer</td><td>npm</td></tr>
+                <tr><td>Jalankan pelayan</td><td><code>php artisan serve</code></td><td><code>npm run dev</code></td></tr>
+              </tbody>
+            </table>
+            <div class="callout">Corak <strong>MVC</strong> sama — yang berubah hanyalah <strong>sintaks &amp; ekosistem</strong>. Laravel "lengkap" (banyak terbina dalam); Express "minimalis" (pilih sendiri). Kenal Laravel = anda sudah faham sebahagian besar konsep.</div>
+          </div>
+          <div class="footer"><span>Latar belakang: hari-1/README.md</span><span>Falsafah: full-stack vs minimalis</span></div>
+        </div>
+      </section>
+
       <section>
         <div class="slide-frame">
           <div class="eyebrow">Persediaan</div>
@@ -520,6 +693,24 @@
             </div>
           </div>
           <div class="footer"><span>Langkah persediaan</span><span>Tiada pemasangan pangkalan data tempatan diperlukan</span></div>
+        </div>
+      </section>
+
+      <!-- Persediaan Windows (tempatan) -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Persediaan Windows — tempatan (Bab 2)</div>
+          <div class="center-stack">
+            <h2>Pasang di Windows — empat perisian.</h2>
+            <div class="grid four">
+              <div class="panel fragment"><h3>1 · Node.js + npm</h3><p>nodejs.org → pemasang <code>.msi</code> LTS · tandakan <strong>Add to PATH</strong> · sahkan <code>node -v</code>.</p></div>
+              <div class="panel fragment"><h3>2 · VS Code</h3><p>Pemasang Windows + sambungan: ESLint, Prettier, EJS, DotENV, MongoDB.</p></div>
+              <div class="panel fragment"><h3>3 · MongoDB Server</h3><p>Community Server <code>.msi</code> · <strong>Install as a Service</strong> (auto-run) di <code>localhost:27017</code>.</p></div>
+              <div class="panel fragment"><h3>4 · MongoDB Compass</h3><p>GUI untuk lihat data · Connect ke <code>mongodb://localhost:27017</code>.</p></div>
+            </div>
+            <div class="callout"><strong>Tutorial penuh + pautan visual rasmi (dengan tangkapan skrin):</strong> <code>nota/07-setup-windows.md</code> · Connection string tempatan: <code>mongodb://localhost:27017/aduan_kpdn</code></div>
+          </div>
+          <div class="footer"><span>Latar belakang: nota/07-setup-windows.md</span><span>Untuk pelajar Windows · Buku Bab 2</span></div>
         </div>
       </section>
 
@@ -548,6 +739,29 @@ const fn = require("./fail");   // import</code></pre>
         </div>
       </section>
 
+      <!-- Konvensyen penamaan -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Konvensyen penamaan (Bab 3)</div>
+          <div class="center-stack tight">
+            <h2>camelCase, PascalCase, UPPER_SNAKE.</h2>
+            <table>
+              <thead><tr><th>Jenis</th><th>Gaya</th><th>Contoh</th></tr></thead>
+              <tbody>
+                <tr><td>Variable &amp; fungsi</td><td><code>camelCase</code></td><td><code>namaPengadu</code>, <code>getAduanById()</code></td></tr>
+                <tr><td>Kelas &amp; model</td><td><code>PascalCase</code></td><td><code>Aduan</code>, <code>AduanController</code></td></tr>
+                <tr><td>Pemalar &amp; env var</td><td><code>UPPER_SNAKE_CASE</code></td><td><code>MONGODB_URI</code></td></tr>
+                <tr><td>Medan MongoDB</td><td><code>camelCase</code></td><td><code>namaPengadu</code>, <code>createdAt</code></td></tr>
+                <tr><td>Koleksi MongoDB</td><td>huruf kecil, jamak (auto)</td><td><code>aduans</code></td></tr>
+                <tr><td>Fail / folder</td><td><code>kebab-case</code> / huruf kecil</td><td><code>aduan-controller.js</code>, <code>controllers/</code></td></tr>
+              </tbody>
+            </table>
+            <div class="callout">Node.js + MongoDB → guna <strong>camelCase hujung ke hujung</strong> (dokumen = objek JS). <code>snake_case</code> untuk SQL. Yang penting: <strong>konsisten</strong> + kuatkuasa dengan ESLint/Prettier.</div>
+          </div>
+          <div class="footer"><span>Latar belakang: nota/06-konvensyen-penamaan.md</span><span>Buku Bab 3</span></div>
+        </div>
+      </section>
+
       <section>
         <div class="slide-frame">
           <div class="eyebrow">Langkah 1–2</div>
@@ -568,6 +782,27 @@ app.listen(3000, () => {
 });</code></pre>
           </div>
           <div class="footer"><span>Express</span><span>Jalankan dengan <code>npm run dev</code> (nodemon)</span></div>
+        </div>
+      </section>
+
+      <!-- Pengurus pakej -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Pengurus pakej (Bab 6)</div>
+          <div class="center-stack tight">
+            <h2>npm, pnpm, Yarn, Bun.</h2>
+            <table>
+              <thead><tr><th>Alat</th><th>Kekuatan</th><th>Fail lock</th></tr></thead>
+              <tbody>
+                <tr><td><strong>npm</strong></td><td>Lalai bersama Node.js · universal · paling biasa</td><td>package-lock.json</td></tr>
+                <tr><td>Yarn</td><td>Pantas · workspaces (monorepo)</td><td>yarn.lock</td></tr>
+                <tr><td>pnpm</td><td>Jimat cakera (hard link) · pantas · ketat</td><td>pnpm-lock.yaml</td></tr>
+                <tr><td>Bun</td><td>Sangat pantas · runtime + pemasang + bundler</td><td>bun.lockb</td></tr>
+              </tbody>
+            </table>
+            <div class="callout"><strong>npx</strong> jalankan pakej tanpa pasang global: <code>npx &lt;pkg&gt;</code> · setara: <code>yarn dlx</code> · <code>pnpm dlx</code> · <code>bunx</code>. Guna <strong>satu</strong> pengurus setiap projek (satu fail lock).</div>
+          </div>
+          <div class="footer"><span>Latar belakang: nota/04-pengurus-pakej.md</span><span>Kursus guna npm · Buku Bab 6</span></div>
         </div>
       </section>
 
@@ -864,6 +1099,45 @@ curl -X POST http://localhost:3000/api/aduan \
             </div>
           </div>
           <div class="footer"><span>Deploy</span><span>Gunakan PORT dari process.env</span></div>
+        </div>
+      </section>
+
+      <!-- Pilihan deployment -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Pilihan deployment</div>
+          <div class="center-stack tight">
+            <h2>Banyak platform — pilih satu.</h2>
+            <table>
+              <thead><tr><th>Platform</th><th>Jenis</th><th>Sesuai untuk</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Render</strong></td><td>PaaS</td><td>Pemula — percuma, mudah (disyorkan kursus)</td></tr>
+                <tr><td>Railway</td><td>PaaS</td><td>Mudah, pengalaman pembangun baik</td></tr>
+                <tr><td>Fly.io</td><td>PaaS / kontena</td><td>Aplikasi global berasaskan Docker</td></tr>
+                <tr><td>Vercel</td><td>Serverless</td><td>Next.js/serverless; Express sebagai function</td></tr>
+                <tr><td>VPS + PM2 + Nginx</td><td>Pelayan maya</td><td>Kawalan penuh (DigitalOcean, AWS EC2)</td></tr>
+                <tr><td>Docker</td><td>Kontena</td><td>Persekitaran konsisten, "build once, run anywhere"</td></tr>
+              </tbody>
+            </table>
+            <div class="callout">Semua berpasangan dengan <strong>MongoDB Atlas</strong>. Konsep teras: <strong>environment variables</strong>, <code>process.env.PORT</code>, dan <strong>build/start command</strong>.</div>
+          </div>
+          <div class="footer"><span>Latar belakang: nota/05-deployment.md</span><span>Hari 3</span></div>
+        </div>
+      </section>
+
+      <!-- Deployment di AWS -->
+      <section>
+        <div class="slide-frame">
+          <div class="eyebrow">Deployment di AWS</div>
+          <div class="center-stack">
+            <h2>AWS — pilihan berskala besar.</h2>
+            <div class="grid two">
+              <div class="panel fragment"><h3>Jalankan Node.js</h3><p><strong>Elastic Beanstalk</strong> — PaaS, paling mudah · <strong>App Runner</strong> — kontena terurus · <strong>Lightsail</strong> — VPS mudah · <strong>EC2</strong> — kawalan penuh (+ PM2/Nginx) · <strong>Lambda + API Gateway</strong> — serverless · <strong>ECS / Fargate</strong> — Docker.</p></div>
+              <div class="panel fragment"><h3>MongoDB di AWS</h3><p><strong>MongoDB Atlas (di AWS)</strong> — terurus, disyorkan · <strong>Amazon DocumentDB</strong> — serasi dengan MongoDB (API-compatible) · <strong>MongoDB di EC2</strong> — pasang &amp; urus sendiri.</p></div>
+            </div>
+            <div class="callout">AWS lebih berkuasa tetapi <strong>kompleks</strong>. Pemula: mula dengan Render + Atlas; masuk AWS melalui <strong>Elastic Beanstalk</strong> + <strong>Atlas / DocumentDB</strong>.</div>
+          </div>
+          <div class="footer"><span>Latar belakang: nota/05-deployment.md</span><span>Hari 3 · enterprise / skala besar</span></div>
         </div>
       </section>
 

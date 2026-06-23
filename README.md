@@ -54,6 +54,18 @@ Urutan kursus mengikut aliran buku rujukan: **asas bahasa & ekosistem** (Hari 1)
 
 > **Petua untuk pengajar:** Setiap `hari-N/README.md` bermula dengan jadual **Rujukan Buku** yang memetakan bahagian hari tersebut ke bab buku, supaya peserta boleh membaca bab berkaitan sebelum/selepas setiap sesi.
 
+## Nota Konsep (Latar Belakang)
+
+Sebelum mula coding, fahami **kenapa** teknologi ini dipilih. Folder [`nota/`](./nota/) mengandungi nota konsep ringkas:
+
+- [**Kenapa Node.js?**](./nota/01-kenapa-nodejs.md) — perbandingan dengan PHP/Python/Java/Go, dan bila sesuai (atau tidak sesuai) guna Node.js. *(Bab 1)*
+- [**Kenapa MongoDB?**](./nota/02-kenapa-mongodb.md) — SQL vs NoSQL, dan bila sesuai guna MongoDB. *(Bab 12)*
+- [**Node.js + MongoDB bersama**](./nota/03-nodejs-dan-mongodb.md) — stack MEAN/MERN dan **contoh sistem komersial sebenar** (Netflix, PayPal, LinkedIn, eBay, Forbes, Adobe). *(Bab 1 & 12)*
+- [**Pengurus pakej & alat CLI**](./nota/04-pengurus-pakej.md) — npm vs pnpm vs Yarn vs Bun, dan npx. *(Bab 6)*
+- [**Deployment**](./nota/05-deployment.md) — konsep + pilihan platform (Render, Railway, Vercel, VPS, Docker, AWS). *(Hari 3)*
+- [**Konvensyen penamaan**](./nota/06-konvensyen-penamaan.md) — camelCase / PascalCase / snake_case untuk Node.js & MongoDB. *(Bab 3)*
+- [**Tutorial persediaan tempatan Windows**](./nota/07-setup-windows.md) 🪟 — pasang Node.js, VS Code, MongoDB Community + Compass (langkah + pautan tutorial visual rasmi). *(Bab 2)*
+
 ## Keperluan Sistem
 
 Sebelum memulakan kursus, pastikan anda mempunyai:
@@ -79,6 +91,8 @@ Sebelum memulakan kursus, pastikan anda mempunyai:
 
 > **Persediaan tempatan vs awan:** Panduan **Hari 1** menyediakan langkah penuh untuk **kedua-dua** pilihan — MongoDB Atlas (awan) **dan** MongoDB Community Server tempatan pada Windows. Lihat bahagian *Persediaan* dalam [`hari-1/README.md`](./hari-1/), termasuk **Senarai Tangkapan Skrin Diperlukan** untuk penyedia bahan kursus.
 
+> 🪟 **Kebanyakan pelajar guna Windows?** Ada **tutorial persediaan tempatan Windows** khusus (langkah penuh + pautan tutorial visual rasmi dengan tangkapan skrin) di [`nota/07-setup-windows.md`](./nota/07-setup-windows.md) — Node.js, VS Code, MongoDB Community Server + Compass.
+
 ## Susunan Teknologi (Tech Stack)
 
 | Lapisan | Teknologi |
@@ -96,6 +110,10 @@ Sebelum memulakan kursus, pastikan anda mempunyai:
 ```
 nodejs-2-days-training/
 ├── README.md                  # Fail ini
+├── nota/                      # Nota konsep (kenapa Node.js, kenapa MongoDB, contoh komersial)
+│   ├── 01-kenapa-nodejs.md
+│   ├── 02-kenapa-mongodb.md
+│   └── 03-nodejs-dan-mongodb.md
 ├── hari-1/                    # Snapshot projek pada akhir Hari 1
 │   ├── README.md              # Nota lengkap Hari 1
 │   ├── server.js              # Aplikasi Express + EJS + sambungan MongoDB
