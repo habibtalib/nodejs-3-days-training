@@ -1,0 +1,39 @@
+### Sistem Aduan KPDN — Koleksi Permintaan REST API
+# Buka fail ini dalam VS Code dengan sambungan "REST Client" atau "Thunder Client".
+# Klik "Send Request" di atas setiap permintaan. Pastikan pelayan berjalan (npm run dev).
+
+@base = http://localhost:3000/api
+
+### 1) Senarai semua aduan
+GET {{base}}/aduan
+Accept: application/json
+
+### 2) Cipta aduan baru
+POST {{base}}/aduan
+Content-Type: application/json
+
+{
+  "namaPengadu": "Siti binti Aziz",
+  "noIc": "910202145566",
+  "telefon": "0198887766",
+  "email": "siti@contoh.com",
+  "kategori": "Penyukatan & Penimbangan",
+  "premis": "Pasar Borong Selatan",
+  "lokasi": "Lot 8, Seri Kembangan, Selangor",
+  "butiran": "Berat ikan tidak sama dengan paparan penimbang."
+}
+
+### 3) Papar satu aduan (ganti :id dengan _id sebenar)
+GET {{base}}/aduan/PASTE_ID_DI_SINI
+Accept: application/json
+
+### 4) Kemaskini status aduan
+PUT {{base}}/aduan/PASTE_ID_DI_SINI
+Content-Type: application/json
+
+{
+  "status": "Selesai"
+}
+
+### 5) Padam aduan
+DELETE {{base}}/aduan/PASTE_ID_DI_SINI

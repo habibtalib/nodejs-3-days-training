@@ -1,0 +1,24 @@
+<div class="max-w-md mx-auto">
+  <div class="bg-white rounded-lg shadow p-8">
+    <h1 class="text-2xl font-bold text-slate-800 mb-1">Log Masuk Kakitangan</h1>
+    <p class="text-slate-500 text-sm mb-6">Hanya kakitangan KPDN boleh mengurus aduan.</p>
+
+    <form method="POST" action="/login" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Username</label>
+        <input type="text" name="username" autofocus required
+          class="w-full border border-slate-300 rounded px-3 py-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1">Kata Laluan</label>
+        <input type="password" name="password" required
+          class="w-full border border-slate-300 rounded px-3 py-2" />
+      </div>
+      <button type="submit" class="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-600">Log Masuk</button>
+    </form>
+
+    <p class="text-xs text-slate-400 mt-6 border-t pt-3">
+      Akaun contoh (selepas <code>npm run seed</code>): <strong>admin</strong> / <strong>kpdn1234</strong>
+    </p>
+  </div>
+</div>
