@@ -11,5 +11,6 @@ Folder ini mengandungi **nota konsep** (bukan langkah amali) untuk membantu pese
 | [05](./05-deployment.md) | **Deployment** — konsep + pilihan platform (Render, Railway, Vercel, VPS, Docker, **AWS**) | Hari 3 |
 | [06](./06-konvensyen-penamaan.md) | **Konvensyen penamaan** — camelCase / PascalCase / snake_case untuk Node.js & MongoDB | Bab 3 |
 | [07](./07-setup-windows.md) | **Tutorial persediaan tempatan Windows** — Node.js, VS Code, MongoDB Community + Compass (+ pautan tutorial visual rasmi) | Bab 2 |
+| [08](./08-query-mongodb.md) | **Senarai pertanyaan MongoDB** — find/operator + **aggregation untuk laporan** (group, trend, $lookup) | Bab 12 |
 
 > Nota ini dijajarkan dengan buku rujukan **_Node.js for Beginners_** (Ulises Gascón, Packt 2024). Lihat [Penjajaran dengan Buku Rujukan](../README.md#penjajaran-dengan-buku-rujukan) di README utama.
